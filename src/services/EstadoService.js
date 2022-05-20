@@ -1,6 +1,6 @@
 import axios from 'axios';
 
-const API = "http://localhost:8080/api/v1/estados";
+const API = "http://localhost:8080/api/a/estados";
 
 class EstadoService {
 

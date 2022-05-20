@@ -1,17 +1,17 @@
 import React, { Component } from 'react'
-import EstadoService from '../services/EstadoService';
+import CidadeService from '../services/CidadeService';
 
-class CreateEstado extends Component {
+class CreateCidade extends Component {
     constructor(props) {
         super(props)
 
         this.state = {
             id: this.props.match.params.id,
-            estado: '',
-            sigla: ''
+            cidade: '',
+            estado: ''
         }
         this.changeEstadoHandler = this.changeEstadoHandler.bind(this);
-        this.changeSiglaHandler = this.changeSiglaHandler.bind(this);
+        this.changeEstadoHandler = this.changeEstadoHandler.bind(this);
         this.saveOrUpdateEstado = this.saveOrUpdateEstado.bind(this);
     }
 
@@ -19,46 +19,46 @@ class CreateEstado extends Component {
         if(this.state.id === '_add'){
             return
         }else{
-            EstadoService.getEstadoById(this.state.id).then( (res) =>{
-                let estado = res.data;
-                this.setState({estado: estado.estado, sigla: estado.sigla});
+            CidadeService.getCidadeById(this.state.id).then( (res) =>{
+                let cidade = res.data;
+                this.setState({cidade: cidade.cidade, estado: cidade.estado});
             });
         }
     }
 
-    saveOrUpdateEstado = (e) => {
+    saveOrUpdateCidade = (e) => {
         e.preventDefault();
-        let estado = {estado: this.state.estado, sigla: this.state.sigla};
-        console.log('estado => ' + JSON.stringify(estado));
+        let cidade = {cidade: this.state.estado, estado: this.state.estado};
+        console.log('cidade => ' + JSON.stringify(cidade));
 
         if(this.state.id === '_add'){
-            EstadoService.createEstado(estado).then(res =>{
-                this.props.history.push('/estados');
+            CidadeService.createCidade(cidade).then(res =>{
+                this.props.history.push('/cidades');
             });
         }else{
-            EstadoService.updateEstado(estado, this.state.id).then( res => {
-                this.props.history.push('/estados');
+            CidadeService.updateCidade(cidade, this.state.id).then( res => {
+                this.props.history.push('/cidades');
             });
         }
     }
     
+    changeCidadeHandler= (event) => {
+        this.setState({cidade: event.target.value});
+    }
+
     changeEstadoHandler= (event) => {
         this.setState({estado: event.target.value});
     }
 
-    changeSiglaHandler= (event) => {
-        this.setState({sigla: event.target.value});
-    }
-
     cancel(){
-        this.props.history.push('/estados');
+        this.props.history.push('/cidades');
     }
 
     getTitle(){
         if(this.state.id === '_add'){
-            return <h3 className="text-center">Adicionar Estado</h3>
+            return <h3 className="text-center">Adicionar Cidade</h3>
         }else{
-            return <h3 className="text-center">Editar Estado</h3>
+            return <h3 className="text-center">Editar Cidade</h3>
         }
     }
     
@@ -75,14 +75,14 @@ class CreateEstado extends Component {
                                 <div className = "card-body">
                                     <form>
                                         <div className = "form-group">
+                                            <label> Cidade: </label>
+                                            <input placeholder="Cidade" name="cidade" className="form-control" 
+                                                value={this.state.cidade} onChange={this.changeCidadeHandler}/>
+                                        </div>
+                                        <div className = "form-group">
                                             <label> Estado: </label>
                                             <input placeholder="Estado" name="estado" className="form-control" 
                                                 value={this.state.estado} onChange={this.changeEstadoHandler}/>
-                                        </div>
-                                        <div className = "form-group">
-                                            <label> Sigla: </label>
-                                            <input placeholder="Sigla" name="sigla" className="form-control" 
-                                                value={this.state.sigla} onChange={this.changeSiglaHandler}/>
                                         </div>
                                         <button className="btn btn-success" onClick={this.saveOrUpdateEstado}>Salvar</button>
                                         <button className="btn btn-danger" onClick={this.cancel.bind(this)} style={{marginLeft: "10px"}}>Cancelar</button>
@@ -96,4 +96,4 @@ class CreateEstado extends Component {
     }
 }
 
-export default CreateEstado
+export default CreateCidade

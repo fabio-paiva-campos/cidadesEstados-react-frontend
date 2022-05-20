@@ -1,0 +1,55 @@
+.Table {
+    width: 100%;
+
+    .mainList {
+        margin: 0 auto;
+
+        .listColumn {
+            color: grey;
+            font-weight: 100;
+        }
+
+        .listItem {
+            padding-top: 20px;
+            padding-right: 100px;
+        }
+
+        .addButton {
+            background: none;
+            border: none;
+            border-radius: 100%;
+            transition: 0.1s;
+            padding-top: 4px;
+            margin-left: 43px;
+        }
+        .addButton:hover {
+            background-color: rgb(220, 220, 220);
+            border: none;
+        }
+
+        .editButton {
+            background: none;
+            border: none;
+            border-radius: 2px;
+            transition: 0.1s;
+            padding-top: 4px;
+            margin-top: 15px;
+        }
+        .editButton:hover {
+            background-color: rgb(200, 211, 255);
+            border: none;
+        }
+
+        .deleteButton {
+            background: none;
+            border: none;
+            border-radius: 2px;
+            transition: 0.1s;
+            padding-top: 4px;
+        }
+        .deleteButton:hover {
+            background-color: rgb(255, 200, 200);
+            border: none;
+        }
+    }
+}
