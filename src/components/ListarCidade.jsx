@@ -10,7 +10,7 @@ class ListarCidade extends Component {
         super(props)
 
         this.state = {
-                cidades: []
+            cidades: []
         }
         this.addCidade = this.addCidade.bind(this);
         this.editCidade = this.editCidade.bind(this);
@@ -58,7 +58,7 @@ class ListarCidade extends Component {
                                 cidade => 
                                 <tr key = {cidade.id}>
                                     <td className='listItem'> {cidade.cidade} </td>
-                                    <td className='listItem'> {cidade.estado} </td>
+                                    <td className='listItem'> {cidade.estado.sigla} </td>
                                     <td>
                                         <button onClick={ () => this.editCidade(cidade.id)} className="editButton"><EditFilledIcon/></button>
                                         <button style={{marginLeft: "10px"}} onClick={ () => this.deleteCidade(cidade.id)} className="deleteButton"><TrashIcon/></button>

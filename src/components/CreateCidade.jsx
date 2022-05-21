@@ -10,9 +10,9 @@ class CreateCidade extends Component {
             cidade: '',
             estado: ''
         }
+        this.changeCidadeHandler = this.changeCidadeHandler.bind(this);
         this.changeEstadoHandler = this.changeEstadoHandler.bind(this);
-        this.changeEstadoHandler = this.changeEstadoHandler.bind(this);
-        this.saveOrUpdateEstado = this.saveOrUpdateEstado.bind(this);
+        this.saveOrUpdateCidade = this.saveOrUpdateCidade.bind(this);
     }
 
     componentDidMount(){
@@ -21,14 +21,14 @@ class CreateCidade extends Component {
         }else{
             CidadeService.getCidadeById(this.state.id).then( (res) =>{
                 let cidade = res.data;
-                this.setState({cidade: cidade.cidade, estado: cidade.estado});
+                this.setState({cidade: cidade.cidade, estado: cidade.estado.sigla});
             });
         }
     }
 
     saveOrUpdateCidade = (e) => {
         e.preventDefault();
-        let cidade = {cidade: this.state.estado, estado: this.state.estado};
+        let cidade = {cidade: this.state.cidade, estado: this.state.estado};
         console.log('cidade => ' + JSON.stringify(cidade));
 
         if(this.state.id === '_add'){

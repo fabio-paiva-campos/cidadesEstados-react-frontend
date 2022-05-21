@@ -10,7 +10,7 @@ class ListarEstado extends Component {
         super(props)
 
         this.state = {
-                estados: []
+            estados: []
         }
         this.addEstado = this.addEstado.bind(this);
         this.editEstado = this.editEstado.bind(this);
