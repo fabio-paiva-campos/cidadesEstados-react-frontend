@@ -53,3 +53,24 @@
         }
     }
 }
+
+.header {
+    background-color: rgb(54, 54, 54);
+    height: 50px;
+    margin-bottom: 20px;
+    width: 100%;
+
+    .headerMenu {
+        margin: 0 auto;
+        position: absolute;
+        left: 39.2%;
+        top: 2%
+    }
+    
+    .headerButton {
+        color: black;
+        background-color: white;
+        padding: 9px;
+        text-decoration: none;
+    }
+}

@@ -77,12 +77,12 @@ class CreateEstado extends Component {
                                         <div className = "form-group">
                                             <label> Estado: </label>
                                             <input placeholder="Estado" name="estado" className="form-control" 
-                                                value={this.state.estado} onChange={this.changeEstadoHandler}/>
+                                            value={this.state.estado} onChange={this.changeEstadoHandler}/>
                                         </div>
                                         <div className = "form-group">
                                             <label> Sigla: </label>
                                             <input placeholder="Sigla" name="sigla" className="form-control" 
-                                                value={this.state.sigla} onChange={this.changeSiglaHandler}/>
+                                            value={this.state.sigla} onChange={this.changeSiglaHandler}/>
                                         </div>
                                         <button className="btn btn-success" onClick={this.saveOrUpdateEstado}>Salvar</button>
                                         <button className="btn btn-danger" onClick={this.cancel.bind(this)} style={{marginLeft: "10px"}}>Cancelar</button>

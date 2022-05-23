@@ -1,5 +1,6 @@
 import React, { Component } from 'react'
 import CidadeService from '../services/CidadeService';
+import EstadoService from '../services/EstadoService';
 
 class CreateCidade extends Component {
     constructor(props) {
@@ -21,7 +22,7 @@ class CreateCidade extends Component {
         }else{
             CidadeService.getCidadeById(this.state.id).then( (res) =>{
                 let cidade = res.data;
-                this.setState({cidade: cidade.cidade, estado: cidade.estado.sigla});
+                this.setState({cidade: cidade.cidade});
             });
         }
     }
@@ -32,7 +33,7 @@ class CreateCidade extends Component {
         console.log('cidade => ' + JSON.stringify(cidade));
 
         if(this.state.id === '_add'){
-            CidadeService.createCidade(cidade).then(res =>{
+            CidadeService.createCidade(cidade).then(res => {
                 this.props.history.push('/cidades');
             });
         }else{
@@ -77,14 +78,16 @@ class CreateCidade extends Component {
                                         <div className = "form-group">
                                             <label> Cidade: </label>
                                             <input placeholder="Cidade" name="cidade" className="form-control" 
-                                                value={this.state.cidade} onChange={this.changeCidadeHandler}/>
+                                            value={this.state.cidade} onChange={this.changeCidadeHandler}/>
                                         </div>
                                         <div className = "form-group">
                                             <label> Estado: </label>
-                                            <input placeholder="Estado" name="estado" className="form-control" 
-                                                value={this.state.estado} onChange={this.changeEstadoHandler}/>
+                                            <select placeholder="Estado" name="estado" className="form-control" 
+                                            value={this.state.estado} onChange={this.changeEstadoHandler}>
+                                                <option></option>
+                                            </select>
                                         </div>
-                                        <button className="btn btn-success" onClick={this.saveOrUpdateEstado}>Salvar</button>
+                                        <button className="btn btn-success" onClick={this.saveOrUpdateCidade}>Salvar</button>
                                         <button className="btn btn-danger" onClick={this.cancel.bind(this)} style={{marginLeft: "10px"}}>Cancelar</button>
                                     </form>
                                 </div>

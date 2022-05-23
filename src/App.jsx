@@ -1,4 +1,4 @@
-import React, {useState} from 'react';
+import React from 'react';
 import {BrowserRouter as Router, Route, Switch} from 'react-router-dom'
 
 import './styles/App.css';
@@ -13,13 +13,11 @@ import ListarCidade from './components/ListarCidade';
 import CreateCidade from './components/CreateCidade';
 
 function App() {
-  const [listFocus, setListFocus] = useState(false)
 
   return (
     <div>
         <Router>
             <Header />
-            <button onClick={() => (setListFocus(!listFocus))}>switch</button>
                 <div className="cidades">
                     <Switch>
                         <Route path = "/cidades" component = {ListarCidade}></Route>

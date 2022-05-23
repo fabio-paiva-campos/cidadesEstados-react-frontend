@@ -12,6 +12,7 @@ class ListarEstado extends Component {
         this.state = {
             estados: []
         }
+        
         this.addEstado = this.addEstado.bind(this);
         this.editEstado = this.editEstado.bind(this);
         this.deleteEstado = this.deleteEstado.bind(this);

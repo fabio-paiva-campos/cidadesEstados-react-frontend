@@ -13,9 +13,12 @@ class HeaderComponent extends Component {
         return (
             <div>
                 <header>
-                    <nav className="navbar navbar-expand-md navbar-dark bg-dark">
-                    <div><a href="https://javaguides.net" className="navbar-brand">Estado Management App</a></div>
-                    </nav>
+                    <div className="header">
+                        <div className='headerMenu'>
+                            <a className='headerButton' href='estados'>Estados</a>
+                            <a className='headerButton' href='cidades'>Cidades</a>
+                        </div>
+                    </div>
                 </header>
             </div>
         )

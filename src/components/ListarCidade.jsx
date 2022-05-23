@@ -12,6 +12,7 @@ class ListarCidade extends Component {
         this.state = {
             cidades: []
         }
+        
         this.addCidade = this.addCidade.bind(this);
         this.editCidade = this.editCidade.bind(this);
         this.deleteCidade = this.deleteCidade.bind(this);
