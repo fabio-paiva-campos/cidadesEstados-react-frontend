@@ -12,6 +12,8 @@ import CreateEstado from './components/CreateEstado';
 import ListarCidade from './components/ListarCidade';
 import CreateCidade from './components/CreateCidade';
 
+import Login from './components/Login';
+
 function App() {
 
   return (
@@ -28,6 +30,12 @@ function App() {
                     <Switch>
                         <Route path = "/estados" component = {ListarEstado}></Route>
                         <Route path = "/add-estado/:id" component = {CreateEstado}></Route>
+                    </Switch>
+                </div>
+                <div className="usuarios">
+                    <Switch>
+                        <Route path = "/usuarios" element = {<Login />}></Route>
+                        {/*<Route path = "/add-usuario/:id" component = {Cadastrar}></Route>*/}
                     </Switch>
                 </div>
         </Router>

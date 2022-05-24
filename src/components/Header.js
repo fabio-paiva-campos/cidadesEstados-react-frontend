@@ -18,6 +18,7 @@ class HeaderComponent extends Component {
                             <a className='headerButton' href='estados'>Estados</a>
                             <a className='headerButton' href='cidades'>Cidades</a>
                         </div>
+                        <a className='loginButton' href='login'>Fazer Login</a>
                     </div>
                 </header>
             </div>

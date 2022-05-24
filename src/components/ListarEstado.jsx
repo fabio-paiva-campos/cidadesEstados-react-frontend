@@ -48,8 +48,8 @@ class ListarEstado extends Component {
                 <table className = "mainList">
                     <thead>
                         <tr>
-                            <th className='listColumn'> Estado </th>
-                            <th className='listColumn'> Sigla </th>
+                            <th className='listColumn'> Estado: </th>
+                            <th className='listColumn'> Sigla: </th>
                             <button className="addButton" onClick={this.addEstado}><AddIcon/></button>
                         </tr>
                     </thead>
