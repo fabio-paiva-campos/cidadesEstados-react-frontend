@@ -15,10 +15,10 @@ class HeaderComponent extends Component {
                 <header>
                     <div className="header">
                         <div className='headerMenu'>
-                            <a className='headerButton' href='estados'>Estados</a>
-                            <a className='headerButton' href='cidades'>Cidades</a>
+                            <a className='headerButton'>Estados</a>
+                            <a className='headerButton'>Cidades</a>
                         </div>
-                        <a className='loginButton' href='login'>Fazer Login</a>
+                        <a className='loginButton'>Fazer Login</a>
                     </div>
                 </header>
             </div>
