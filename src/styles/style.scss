@@ -1,18 +1,22 @@
+body {
+    margin: 0;
+    font-family: 'Segoe UI';
+}
+
 .Table {
-    width: 100%;
 
     .mainList {
         margin: 0 auto;
         width: 450px;
 
-        .listColumn {
+        .listColumnLeft {
             color: grey;
             font-weight: 100;
         }
-
-        .listItem {
-            padding-top: 20px;
-            padding-right: 100px;
+        .listColumnRight {
+            color: grey;
+            font-weight: 100;
+            margin-left: 160px;
         }
 
         .addButton {
@@ -21,11 +25,18 @@
             border-radius: 100%;
             transition: 0.1s;
             padding-top: 4px;
-            margin-left: 43px;
+            padding-bottom: 4px;
+            margin-left: 142px;
         }
         .addButton:hover {
             background-color: rgb(220, 220, 220);
             border: none;
+            cursor: pointer;
+        }
+
+        .listItem {
+            margin-left: -3px;
+            margin-right: 114px;
         }
 
         .leftButton {
@@ -33,12 +44,13 @@
             border: none;
             border-radius: 2px;
             transition: 0.1s;
-            padding-top: 4px;
-            margin-top: 15px;
+            padding-top: 6px;
+            padding-bottom: 6px;
         }
         .leftButton:hover {
             background-color: rgb(200, 211, 255);
             border: none;
+            cursor: pointer;
         }
 
         .rightButton {
@@ -46,13 +58,14 @@
             border: none;
             border-radius: 2px;
             transition: 0.1s;
-            padding-top: 4px;
-            margin-left: 10px;
+            padding-top: 6px;
+            padding-bottom: 6px;
         }
 
         .rightButton:hover {
             background-color: rgb(255, 200, 200);
             border: none;
+            cursor: pointer;
         }
 
         .textArea {
@@ -78,16 +91,40 @@
     width: 100%;
 
     .headerMenu {
-        margin: 0 auto;
         position: absolute;
-        left: 39.2%;
-        top: 2%
-    }
-    
-    .headerButton {
-        color: black;
-        background-color: white;
-        padding: 9px;
-        text-decoration: none;
+        top: 2.2%;
+        right: 39%;
+
+        .headerButton {
+            color: black;
+            background-color: rgb(212, 212, 212);
+            padding: 9px;
+            text-decoration: none;
+            transition: 0.2s;
+        }
+        .headerButton:hover {
+            background-color: white;
+            cursor: pointer;
+        }
+        .headerButtonSelected {
+            color: black;
+            background-color: white;
+            padding: 9px;
+            text-decoration: none;
+            cursor: pointer;
+        }
+
+        .loginButton {
+            color: black;
+            background-color: rgb(212, 212, 212);
+            padding: 9px;
+            margin-left: 200px;
+            text-decoration: none;
+            transition: 0.2s;
+        }
+        .loginButton:hover {
+            background-color: white;
+            cursor: pointer;
+        }
     }
 }

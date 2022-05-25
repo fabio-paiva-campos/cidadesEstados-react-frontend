@@ -28,43 +28,58 @@ const Cidades = () => {
     function editCidadeAction(id){
         let index = id
         let cidadeValue = document.getElementById("editCidadeArea").value
-        let siglaValue = document.getElementById("editSiglaArea").value
+        let estadoValue = document.getElementById("editCidadeEstadoArea").value
 
-        let cidade = {cidade: cidadeValue, sigla: siglaValue}
+        let estadoSelect = {}
+        estados.map((estado) => {
+            if(estado.sigla === estadoValue) {
+                return estadoSelect = {id: estado.id, estado: estado.estado, sigla: estado.sigla}
+            }
+        })
 
+        let cidade = {cidade: cidadeValue, estado: estadoSelect}
         CidadeService.updateCidade(cidade, index)
         setEditCidade(false)
     }
 
     function addCidadeAction(){
         let cidadeValue = document.getElementById("addCidadeArea").value
-        let estadoValue = document.getElementById("addCidadeEstadoArea").key
+        let estadoValue = document.getElementById("addCidadeEstadoArea").value
 
-        let estadoSelect = []
+        let estadoSelect = {}
         estados.map((estado) => {
-            if(estado.sigla == estadoValue) {
-                console.log(estado.id)
+            if(estado.sigla === estadoValue) {
+                return estadoSelect = {id: estado.id, estado: estado.estado, sigla: estado.sigla}
             }
         })
+
+        let cidade = {cidade: cidadeValue, estado: estadoSelect}
+        CidadeService.createCidade(cidade)
+        setAddCidade(false)
     }
 
     return (
         <div className = "Table">
-            <table className = "mainList">
-                <thead>
-                    <tr>
-                        <th className='listColumn'> Cidade: </th>
-                        <th className='listColumn'> Sigla: </th>
-                        <button className="addButton" onClick={() => setAddCidade(true)}><AddIcon /></button>
-                    </tr>
-                </thead>
-                <tbody>
+            <div className = "mainList">
+                <div>
+                    <span className='listColumnLeft'> Cidade: </span>
+                    <span className='listColumnRight'> Estado: </span>
+                    <button className="addButton" onClick={() => setAddCidade(true)}><AddIcon /></button>
+                </div>
+                <table>
                     {cidades.map((cidade) => { return (
                         <tr key = {cidade.id}>
                             { editCidade && selectedCidade === cidade.id ? (
                                 <>
-                                    <td><textarea autoFocus id="editCidadeArea" className="textArea" placeholder='Cidade' defaultValue={cidade.cidade} rows={1} /></td>
-                                    <td><textarea id="editSiglaArea" className="textArea" placeholder='Sigla' defaultValue={cidade.sigla} rows={1} /></td>
+                                    <td><textarea autoFocus id="editCidadeArea" className="textArea" placeholder='Cidade' value={cidade.cidade} rows={1} /></td>
+                                    <td>
+                                        <select id="editCidadeEstadoArea" className='selector'>
+                                            {estados.map((estado) => { return (                               
+                                                    <option key = {estado.id}>{estado.sigla}</option>
+                                                )}
+                                            )}
+                                        </select>
+                                    </td>
                                     <td>
                                         <button className="leftButton" onClick={() => (editCidadeAction(cidade.id))}><CheckIcon /></button>
                                         <button className="rightButton" onClick={() => (setEditCidade(false))}><CrossIcon /></button>
@@ -72,8 +87,8 @@ const Cidades = () => {
                                 </>
                             ) : (
                                 <>
-                                    <td className='listItem'>{cidade.cidade}</td>
-                                    <td className='listItem'>{cidade.estado.sigla}</td>
+                                    <td><span className='listItem'>{cidade.cidade}</span></td>
+                                    <td><span className='listItem'>{cidade.estado.sigla}</span></td>
                                     <td>
                                         <button className="leftButton" onClick={() => {setSelectedCidade(cidade.id); setEditCidade(true)}}><EditFilledIcon /></button>
                                         <button className="rightButton" onClick={() => deleteCidade(cidade.id)}><TrashIcon /></button>
@@ -102,8 +117,8 @@ const Cidades = () => {
                     ) : (
                         null
                     )}
-               </tbody>
-            </table>
+               </table>
+            </div>
         </div>
     )
 }

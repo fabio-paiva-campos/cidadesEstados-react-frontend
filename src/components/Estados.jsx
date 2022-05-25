@@ -45,15 +45,13 @@ const Estados = () => {
 
     return (
         <div className = "Table">
-            <table className = "mainList">
-                <thead>
-                    <tr>
-                        <th className='listColumn'> Estado: </th>
-                        <th className='listColumn'> Sigla: </th>
-                        <button className="addButton" onClick={() => setAddEstado(true)}><AddIcon /></button>
-                    </tr>
-                </thead>
-                <tbody>
+            <div className = "mainList">
+                <div>
+                    <span className='listColumnLeft'> Estado: </span>
+                    <span className='listColumnRight'> Sigla: </span>
+                    <button className="addButton" onClick={() => setAddEstado(true)}><AddIcon /></button>
+                </div>
+                <table>
                     {estados.map((estado) => { return (
                         <tr key = {estado.id}>
                             { editEstado && selectedEstado === estado.id ? (
@@ -67,8 +65,8 @@ const Estados = () => {
                                 </>
                             ) : (
                                 <>
-                                    <td className='listItem'>{estado.estado}</td>
-                                    <td className='listItem'>{estado.sigla}</td>
+                                    <td><span className='listItem'>{estado.estado}</span></td>
+                                    <td><span className='listItem'>{estado.sigla}</span></td>
                                     <td>
                                         <button className="leftButton" onClick={() => {setSelectedEstado(estado.id); setEditEstado(true)}}><EditFilledIcon /></button>
                                         <button className="rightButton" onClick={() => deleteEstado(estado.id)}><TrashIcon /></button>
@@ -90,8 +88,8 @@ const Estados = () => {
                     ) : (
                         null
                     )}
-               </tbody>
-            </table>
+               </table>
+            </div>
         </div>
     )
 }
