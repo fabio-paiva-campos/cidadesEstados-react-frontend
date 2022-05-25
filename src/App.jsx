@@ -5,11 +5,8 @@ import './styles/style.scss'
 
 import Header from './components/Header';
 
-import ListarEstado from './components/ListarEstado';
-import CreateEstado from './components/CreateEstado';
-
-import ListarCidade from './components/ListarCidade';
-import CreateCidade from './components/CreateCidade';
+import Estados from './components/Estados';
+import Cidades from './components/Cidades';
 
 import Login from './components/Login';
 
@@ -18,7 +15,7 @@ function App() {
   return (
     <div>
       <Header/>
-      <ListarEstado/>
+      <Cidades/>
     </div>
   );
 }

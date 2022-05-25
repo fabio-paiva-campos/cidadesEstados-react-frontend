@@ -3,6 +3,7 @@
 
     .mainList {
         margin: 0 auto;
+        width: 450px;
 
         .listColumn {
             color: grey;
@@ -27,7 +28,7 @@
             border: none;
         }
 
-        .editButton {
+        .leftButton {
             background: none;
             border: none;
             border-radius: 2px;
@@ -35,26 +36,37 @@
             padding-top: 4px;
             margin-top: 15px;
         }
-        .editButton:hover {
+        .leftButton:hover {
             background-color: rgb(200, 211, 255);
             border: none;
         }
 
-        .deleteButton {
+        .rightButton {
             background: none;
             border: none;
             border-radius: 2px;
             transition: 0.1s;
             padding-top: 4px;
+            margin-left: 10px;
         }
-        .deleteButton:hover {
+
+        .rightButton:hover {
             background-color: rgb(255, 200, 200);
             border: none;
         }
 
-        #editArea {
-            padding-right: 90px;
+        .textArea {
+            margin-top: 20px;
+            margin-left: -2px;
             resize: none;
+            width: 120px;
+            border: none;
+        }
+
+        .selector {
+            margin-top: 13px;
+            margin-left: -4px;
+            border: none;
         }
     }
 }
