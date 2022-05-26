@@ -57,7 +57,7 @@ const Estados = () => {
                             { editEstado && selectedEstado === estado.id ? (
                                 <>
                                     <td><textarea autoFocus id="editEstadoArea" className="textArea" placeholder='Estado' defaultValue={estado.estado} rows={1} /></td>
-                                    <td><textarea id="editSiglaArea" className="textArea" placeholder='Sigla' defaultValue={estado.sigla} rows={1} /></td>
+                                    <td><textarea id="editSiglaArea" className="textAreaRight" placeholder='Sigla' defaultValue={estado.sigla} rows={1} /></td>
                                     <td>
                                         <button className="leftButton" onClick={() => (editEstadoAction(estado.id))}><CheckIcon /></button>
                                         <button className="rightButton" onClick={() => (setEditEstado(false))}><CrossIcon /></button>

@@ -22,7 +22,7 @@ function Header() {
             </header>
             <div className = 'appArea'>
                 {appArea === 0 ? (
-                    <Login/>
+                    <Estados/>
                 ) : (
                     <Cidades/>
                 )}

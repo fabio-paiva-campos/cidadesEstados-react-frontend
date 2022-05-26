@@ -16,7 +16,7 @@ body {
         .listColumnRight {
             color: grey;
             font-weight: 100;
-            margin-left: 160px;
+            margin-left: 150px;
         }
 
         .addButton {
@@ -36,7 +36,7 @@ body {
 
         .listItem {
             margin-left: -3px;
-            margin-right: 114px;
+            margin-right: 102px;
         }
 
         .leftButton {
@@ -69,17 +69,35 @@ body {
         }
 
         .textArea {
-            margin-top: 20px;
-            margin-left: -2px;
             resize: none;
-            width: 120px;
+            width: 185px;
+            height: 20px;
             border: none;
+            font-family: 'Segoe UI';
+            font-size: 15px;
+            margin-top: 5px;
+            margin-left: -5px;
+            margin-right: 20px;
+        }
+
+        .textAreaRight {
+            resize: none;
+            width: 50px;
+            height: 20px;
+            border: none;
+            font-family: 'Segoe UI';
+            font-size: 15px;
+            margin-top: 5px;
+            margin-right: 90px;
         }
 
         .selector {
-            margin-top: 13px;
-            margin-left: -4px;
             border: none;
+            padding: 5px;
+            margin-right: 110px;
+            margin-left: -10px;
+            font-family: 'Segoe UI';
+            font-size: 15px;
         }
     }
 }
@@ -91,9 +109,9 @@ body {
     width: 100%;
 
     .headerMenu {
-        position: absolute;
-        top: 2.2%;
-        right: 39%;
+        margin: 0 auto;
+        width: 450px;
+        padding-top: 20px;
 
         .headerButton {
             color: black;
