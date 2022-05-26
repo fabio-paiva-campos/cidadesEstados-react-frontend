@@ -7,6 +7,8 @@ import AddIcon from '@atlaskit/icon/glyph/add'
 import CheckIcon from '@atlaskit/icon/glyph/check';
 import CrossIcon from '@atlaskit/icon/glyph/cross';
 
+import { useAppContext } from '../hooks/Context';
+
 const Estados = () => {
     let arr = []
     const [estados, setEstados] = useState(arr)

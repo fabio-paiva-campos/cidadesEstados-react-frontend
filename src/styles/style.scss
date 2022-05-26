@@ -146,3 +146,41 @@ body {
         }
     }
 }
+
+.loginContainer {
+    width: 100%;
+
+    .login {
+        margin: 0 auto;
+        width: 450px;
+
+        .loginForm {
+            list-style: none;
+            margin-left: -40px;
+
+            .textArea {
+                border: none;
+                margin-top: 15px;
+                margin-bottom: 15px;
+                width: 440px;
+                resize: none;
+                font-family: 'Segoe UI';
+                font-size: 15px;
+            }
+
+            .loginButton {
+                border: none;
+                color: black;
+                background-color: rgb(212, 212, 212);
+                padding: 9px;
+                text-decoration: none;
+                transition: 0.2s;
+                margin-top: 15px;
+            }
+            .loginButton:hover {
+                background-color: white;
+                cursor: pointer;
+            }
+        }
+    }
+}
