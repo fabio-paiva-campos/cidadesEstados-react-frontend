@@ -6,6 +6,7 @@ import { useState } from 'react';
 function Login() {
     let arr = []
     const [logged, setLogged] = useAppContext()
+    const [userName, setUserName] = useAppContext()
     const [users, setUsers] = useState(arr)
 
     React.useEffect(() => {
@@ -15,6 +16,8 @@ function Login() {
     function logCheck() {
         let usuarioValue = document.getElementById("loginInputUser").value
         let senhaValue = document.getElementById("loginInputPassword").value
+        //setUserName(usuarioValue.toString())
+        console.log(userName)
 
         users.map(user => {
             if(user.usuario === usuarioValue) {
@@ -35,10 +38,10 @@ function Login() {
                 <h2>Login:</h2>
                 <ul className = "loginForm">
                     <li>
-                        <textArea id = "loginInputUser" className='textArea' placeholder="Usuario" name="usuario" rows={1} autoFocus/>
+                        <textarea id = "loginInputUser" className='textArea' placeholder="Usuário" name="usuario" rows={1} autoFocus/>
                     </li>
                     <li>
-                        <textArea id = "loginInputPassword" className='textArea' placeholder="Senha" name="senha" rows={1}/>
+                        <textarea id = "loginInputPassword" className='textArea' placeholder="Senha" name="senha" rows={1}/>
                     </li>
                     <li>
                         <button className="loginButton" onClick={() => (logCheck())}>Entrar</button>

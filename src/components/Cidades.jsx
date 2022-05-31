@@ -1,6 +1,6 @@
-import React, { useState } from 'react'
-import CidadeService from '../services/CidadeService'
+import React, { useState, useEffect } from 'react'
 import EstadoService from '../services/EstadoService'
+import CidadeService from '../services/CidadeService'
 
 import EditFilledIcon from '@atlaskit/icon/glyph/edit-filled'
 import TrashIcon from '@atlaskit/icon/glyph/trash'
@@ -12,16 +12,16 @@ import { useAppContext } from '../hooks/Context';
 
 const Cidades = () => {
     let arr = []
-    const [cidades, setCidades] = useState(arr)
     const [estados, setEstados] = useState(arr)
+    const [cidades, setCidades] = useState(arr)
     const [addCidade, setAddCidade] = useState(false)
     const [editCidade, setEditCidade] = useState(false)
     const [selectedCidade, setSelectedCidade] = useState(0)
 
-    React.useEffect(() => {
-        CidadeService.getCidade().then((res) => {setCidades(res.data)})
+    useEffect(() => {
         EstadoService.getEstado().then((res) => {setEstados(res.data)})
-    }, []);
+        CidadeService.getCidade().then((res) => {setCidades(res.data)})
+    }, [])
 
     function deleteCidade(id){
         CidadeService.deleteCidade(id)
@@ -68,58 +68,61 @@ const Cidades = () => {
                     <span className='listColumnRight'> Estado: </span>
                     <button className="addButton" onClick={() => setAddCidade(true)}><AddIcon /></button>
                 </div>
-                <table>
-                    {cidades.map((cidade) => { return (
-                        <tr key = {cidade.id}>
-                            { editCidade && selectedCidade === cidade.id ? (
-                                <>
-                                    <td><textarea autoFocus id="editCidadeArea" className="textArea" placeholder='Cidade' value={cidade.cidade} rows={1} /></td>
-                                    <td>
-                                        <select id="editCidadeEstadoArea" className='selector'>
-                                            {estados.map((estado) => { return (                               
-                                                    <option key = {estado.id}>{estado.sigla}</option>
-                                                )}
-                                            )}
-                                        </select>
-                                    </td>
-                                    <td>
-                                        <button className="leftButton" onClick={() => (editCidadeAction(cidade.id))}><CheckIcon /></button>
-                                        <button className="rightButton" onClick={() => (setEditCidade(false))}><CrossIcon /></button>
-                                    </td>
-                                </>
-                            ) : (
-                                <>
-                                    <td><span className='listItem'>{cidade.cidade}</span></td>
-                                    <td><span className='listItem'>{cidade.estado.sigla}</span></td>
-                                    <td>
-                                        <button className="leftButton" onClick={() => {setSelectedCidade(cidade.id); setEditCidade(true)}}><EditFilledIcon /></button>
-                                        <button className="rightButton" onClick={() => deleteCidade(cidade.id)}><TrashIcon /></button>
-                                    </td>
-                                </>
-                            )}
-                        </tr>
-                        )}
-                    )}
-                    {addCidade ? (
-                        <>
-                            <td><textarea autoFocus id="addCidadeArea" className="textArea" placeholder='Cidade' defaultValue='' rows={1} /></td>
-                            <td>
-                                <select id="addCidadeEstadoArea" className='selector'>
-                                    {estados.map((estado) => { return (                               
-                                            <option key = {estado.id}>{estado.sigla}</option>
-                                        )}
+                    <table>
+                        <tbody>
+                            {cidades.map((cidade) => { return (
+                                <tr key = {cidade.id}>
+                                    { editCidade && selectedCidade === cidade.id ? (
+                                        <>
+                                            <td><textarea autoFocus id="editCidadeArea" className="textArea" placeholder='Cidade' value={cidade.cidade} rows={1} /></td>
+                                            <td>
+                                                <select id="editCidadeEstadoArea" className='selector'>
+                                                    <option></option>
+                                                    {estados.map((estado) => { return (                               
+                                                            <option key = {estado.id}>{estado.sigla}</option>
+                                                        )}
+                                                    )}
+                                                </select>
+                                            </td>
+                                            <td>
+                                                <button className="leftButton" onClick={() => (editCidadeAction(cidade.id))}><CheckIcon /></button>
+                                                <button className="rightButton" onClick={() => (setEditCidade(false))}><CrossIcon /></button>
+                                            </td>
+                                        </>
+                                    ) : (
+                                        <div className='listItem'>
+                                            <td className='itemTextLeft'><span>{cidade.cidade}</span></td>
+                                            <td className='itemTextRight'><span>{cidade.estado.sigla}</span></td>
+                                            <td>
+                                                <button className="leftButton" onClick={() => {setSelectedCidade(cidade.id); setEditCidade(true)}}><EditFilledIcon /></button>
+                                                <button className="rightButton" onClick={() => deleteCidade(cidade.id)}><TrashIcon /></button>
+                                            </td>
+                                        </div>
                                     )}
-                                </select>
-                            </td>
-                            <td>
-                                <button className="leftButton" onClick={() => (addCidadeAction())}><CheckIcon /></button>
-                                <button className="rightButton" onClick={() => (setAddCidade(false))}><CrossIcon /></button>
-                            </td>
-                        </>
-                    ) : (
-                        null
-                    )}
-               </table>
+                                </tr>
+                                )}
+                            )}
+                        </tbody>
+                        {addCidade ? (
+                            <>
+                                <td><textarea autoFocus id="addCidadeArea" className="textArea" placeholder='Cidade' defaultValue='' rows={1} /></td>
+                                <td>
+                                    <select id="addCidadeEstadoArea" className='selector'>
+                                        {estados.map((estado) => { return (                               
+                                                <option key = {estado.id}>{estado.sigla}</option>
+                                            )}
+                                        )}
+                                    </select>
+                                </td>
+                                <td>
+                                    <button className="leftButton" onClick={() => (addCidadeAction())}><CheckIcon /></button>
+                                    <button className="rightButton" onClick={() => (setAddCidade(false))}><CrossIcon /></button>
+                                </td>
+                            </>
+                        ) : (
+                            null
+                        )}
+                </table>
             </div>
         </div>
     )

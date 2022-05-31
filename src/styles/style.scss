@@ -35,60 +35,73 @@ body {
         }
 
         .listItem {
+            width: 442px;
             margin-left: -3px;
-            margin-right: 102px;
+            height: 42px;
+            margin-top: 5px;
+
+            .itemTextLeft {
+                min-width: 200px;
+            }
+
+            .itemTextRight {
+                min-width: 156px;
+            }
+
+            .leftButton {
+                background: none;
+                border: none;
+                border-radius: 2px;
+                transition: 0.1s;
+                padding-top: 6px;
+                padding-bottom: 6px;
+            }
+            .leftButton:hover {
+                background-color: rgb(200, 211, 255);
+                border: none;
+                cursor: pointer;
+            }
+
+            .rightButton {
+                background: none;
+                border: none;
+                border-radius: 2px;
+                transition: 0.1s;
+                padding-top: 6px;
+                padding-bottom: 6px;
+            }
+
+            .rightButton:hover {
+                background-color: rgb(255, 200, 200);
+                border: none;
+                cursor: pointer;
+            }
         }
 
-        .leftButton {
-            background: none;
-            border: none;
-            border-radius: 2px;
-            transition: 0.1s;
-            padding-top: 6px;
-            padding-bottom: 6px;
-        }
-        .leftButton:hover {
-            background-color: rgb(200, 211, 255);
-            border: none;
-            cursor: pointer;
-        }
-
-        .rightButton {
-            background: none;
-            border: none;
-            border-radius: 2px;
-            transition: 0.1s;
-            padding-top: 6px;
-            padding-bottom: 6px;
-        }
-
-        .rightButton:hover {
-            background-color: rgb(255, 200, 200);
-            border: none;
-            cursor: pointer;
+        .listItem:hover {
+            background-color: rgb(245, 245, 245);
         }
 
         .textArea {
             resize: none;
-            width: 185px;
+            width: 180px;
             height: 20px;
             border: none;
             font-family: 'Segoe UI';
             font-size: 15px;
-            margin-top: 5px;
+            margin-top: 10px;
             margin-left: -5px;
             margin-right: 20px;
         }
 
         .textAreaRight {
             resize: none;
-            width: 50px;
+            width: 60px;
             height: 20px;
             border: none;
             font-family: 'Segoe UI';
             font-size: 15px;
             margin-top: 5px;
-            margin-right: 90px;
         }
 
         .selector {
@@ -144,6 +157,14 @@ body {
             background-color: white;
             cursor: pointer;
         }
+        .loginButtonSelected {
+            color: black;
+            background-color: white;
+            padding: 9px;
+            margin-left: 200px;
+            text-decoration: none;
+            transition: 0.2s;
+        }
     }
 }
 
@@ -162,10 +183,12 @@ body {
                 border: none;
                 margin-top: 15px;
                 margin-bottom: 15px;
-                width: 440px;
+                width: 435px;
+                padding: 5px;
                 resize: none;
                 font-family: 'Segoe UI';
                 font-size: 15px;
+                background-color: rgb(235, 235, 235);
             }
 
             .loginButton {
