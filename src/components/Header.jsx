@@ -9,7 +9,6 @@ import EstadosUnlogged from './Estados Unlogged';
 function Header() {
     const [appArea, setAppArea] = useState(0)
     const [logged, setLogged] = useAppContext()
-    const [userName, setUserName] = useAppContext()
 
     function appAreaSwitch(appArea) {
         if(logged === true) {
@@ -47,7 +46,7 @@ function Header() {
                         <a className={appArea === 1 ? 'headerButtonSelected' : 'headerButton'}
                             onClick={() => (setAppArea(1))}>Cidades</a>
                         <a className={appArea === 2 ? 'loginButtonSelected' : 'loginButton'}
-                            onClick={() => (setAppArea(2))}>{logged === true ? userName : 'Fazer Login'}</a>
+                            onClick={() => (setAppArea(2))}>{logged === true ? document.getElementById("loginInputUser").value : 'Fazer Login'}</a>
                     </div>
                 </div>
             </header>

@@ -1,4 +1,4 @@
-import React, { createContext, useContext, useEffect, useLayoutEffect, useState } from "react";
+import React, { createContext, useContext, useEffect, useState } from "react";
 import CidadeService from "../services/CidadeService";
 import EstadoService from "../services/EstadoService";
 
@@ -12,7 +12,6 @@ export function ContextWrap({children}) {
     let arr = []
     let str = "username"
     const [logged, setLogged] = useState(false)
-    const [userName, setUserName] = useState(str)
     const [cidades, setCidades] = useState(arr)
     const [estados, setEstados] = useState(arr)
 
@@ -22,7 +21,7 @@ export function ContextWrap({children}) {
     }, [])
 
     return (
-        <Context.Provider value = {[logged, setLogged, userName, setUserName, cidades, setCidades, estados, setEstados]}>
+        <Context.Provider value = {[logged, setLogged, cidades, setCidades, estados, setEstados]}>
             {children}
         </Context.Provider>
     )
