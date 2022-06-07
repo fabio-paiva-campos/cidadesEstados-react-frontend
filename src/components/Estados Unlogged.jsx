@@ -15,8 +15,8 @@ const EstadosUnlogged = () => {
         <div className = "Table">
             <div className = "mainList">
                 <div>
-                    <span className='listColumnLeft'> Cidade: </span>
-                    <span className='listColumnRight'> Estado: </span>
+                    <span className='listColumnLeft'> Estado: </span>
+                    <span className='listColumnRight'> Sigla: </span>
                 </div>
                 <table>
                     <tbody>

@@ -46,7 +46,7 @@ function Header() {
                         <a className={appArea === 1 ? 'headerButtonSelected' : 'headerButton'}
                             onClick={() => (setAppArea(1))}>Cidades</a>
                         <a className={appArea === 2 ? 'loginButtonSelected' : 'loginButton'}
-                            onClick={() => (setAppArea(2))}>{logged === true ? document.getElementById("loginInputUser").value : 'Fazer Login'}</a>
+                            onClick={() => (setAppArea(2))}>{logged === true ? 'logado' : 'Login'}</a>
                     </div>
                 </div>
             </header>

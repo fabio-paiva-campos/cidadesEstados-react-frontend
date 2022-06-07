@@ -27,12 +27,12 @@ const Estados = () => {
         cidades.map((cidade) => {
             if (cidade.estado.id === id) {
                 CidadeService.deleteCidade(cidade.id)
-                EstadoService.deleteEstado(id)
             }
         })
 
         let estadosFinal = [...estados]
         if(window.confirm('Excluir Estado? Isso também excluirá todas as cidades que pertencem a ele')) {
+            EstadoService.deleteEstado(id)
             estadosFinal.forEach((estado, index) => {
                 if (estado.id === id) {
                     estadosFinal.splice(index, 1)
@@ -86,14 +86,14 @@ const Estados = () => {
                         {estados.map((estado) => { return (
                             <tr key = {estado.id}>
                                 { editEstado && selectedEstado === estado.id ? (
-                                    <>
+                                    <div className='listItem'>
                                         <td><textarea autoFocus id="editEstadoArea" className="textArea" placeholder='Estado' defaultValue={estado.estado} rows={1} /></td>
                                         <td><textarea id="editSiglaArea" className="textAreaRight" placeholder='Sigla' defaultValue={estado.sigla} rows={1} /></td>
                                         <td>
                                             <button className="leftButton" onClick={() => (editEstadoAction(estado.id))}><CheckIcon /></button>
                                             <button className="rightButton" onClick={() => (setEditEstado(false))}><CrossIcon /></button>
                                         </td>
-                                    </>
+                                    </div>
                                 ) : (
                                     <div className='listItem'>
                                         <td className='itemTextLeft'><span>{estado.estado}</span></td>
@@ -109,14 +109,14 @@ const Estados = () => {
                         )}
                     </tbody>
                     {addEstado ? (
-                        <>
+                        <div className='listItem'>
                             <td><textarea autoFocus id="addEstadoArea" className="textArea" placeholder='Estado' defaultValue='' rows={1} /></td>
                             <td><textarea id="addSiglaArea" className="textAreaRight" placeholder='Sigla' defaultValue='' rows={1} /></td>
                             <td>
                                 <button className="leftButton" onClick={() => (addEstadoAction())}><CheckIcon /></button>
                                 <button className="rightButton" onClick={() => (setAddEstado(false))}><CrossIcon /></button>
                             </td>
-                        </>
+                        </div>
                     ) : (
                         null
                     )}

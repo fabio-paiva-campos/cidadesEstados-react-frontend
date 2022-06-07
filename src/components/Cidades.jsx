@@ -8,7 +8,7 @@ import AddIcon from '@atlaskit/icon/glyph/add'
 import CheckIcon from '@atlaskit/icon/glyph/check';
 import CrossIcon from '@atlaskit/icon/glyph/cross';
 
-import { useAppContext } from '../hooks/Context';
+import { createId, useAppContext } from '../hooks/Context';
 
 const Cidades = () => {
     let arr = []
@@ -25,6 +25,14 @@ const Cidades = () => {
 
     function deleteCidade(id){
         CidadeService.deleteCidade(id)
+
+        let cidadesFinal = [...cidades]
+        cidadesFinal.forEach((cidade, index) => {
+            if(cidade.id === id) {
+                cidadesFinal.splice(index, 1)
+            }
+        })
+        setCidades(cidadesFinal)
     }
 
     function editCidadeAction(id){
@@ -42,6 +50,15 @@ const Cidades = () => {
         let cidade = {cidade: cidadeValue, estado: estadoSelect}
         CidadeService.updateCidade(cidade, index)
         setEditCidade(false)
+
+        let cidadesFinal = [...cidades]
+        cidadesFinal.forEach((cidade) => {
+            if(cidade.id === id) {
+                cidade.cidade = cidadeValue
+                cidade.estado = estadoSelect
+            }
+        })
+        setCidades(cidadesFinal)
     }
 
     function addCidadeAction(){
@@ -58,6 +75,8 @@ const Cidades = () => {
         let cidade = {cidade: cidadeValue, estado: estadoSelect}
         CidadeService.createCidade(cidade)
         setAddCidade(false)
+
+        cidades.push({id: createId, cidade: cidadeValue, estado: estadoSelect})
     }
 
     return (
@@ -73,11 +92,10 @@ const Cidades = () => {
                             {cidades.map((cidade) => { return (
                                 <tr key = {cidade.id}>
                                     { editCidade && selectedCidade === cidade.id ? (
-                                        <>
+                                        <div className='listItem'>
                                             <td><textarea autoFocus id="editCidadeArea" className="textArea" placeholder='Cidade' value={cidade.cidade} rows={1} /></td>
                                             <td>
                                                 <select id="editCidadeEstadoArea" className='selector'>
-                                                    <option></option>
                                                     {estados.map((estado) => { return (                               
                                                             <option key = {estado.id}>{estado.sigla}</option>
                                                         )}
@@ -88,7 +106,7 @@ const Cidades = () => {
                                                 <button className="leftButton" onClick={() => (editCidadeAction(cidade.id))}><CheckIcon /></button>
                                                 <button className="rightButton" onClick={() => (setEditCidade(false))}><CrossIcon /></button>
                                             </td>
-                                        </>
+                                        </div>
                                     ) : (
                                         <div className='listItem'>
                                             <td className='itemTextLeft'><span>{cidade.cidade}</span></td>
@@ -104,7 +122,7 @@ const Cidades = () => {
                             )}
                         </tbody>
                         {addCidade ? (
-                            <>
+                            <div className='listItem'>
                                 <td><textarea autoFocus id="addCidadeArea" className="textArea" placeholder='Cidade' defaultValue='' rows={1} /></td>
                                 <td>
                                     <select id="addCidadeEstadoArea" className='selector'>
@@ -118,7 +136,7 @@ const Cidades = () => {
                                     <button className="leftButton" onClick={() => (addCidadeAction())}><CheckIcon /></button>
                                     <button className="rightButton" onClick={() => (setAddCidade(false))}><CrossIcon /></button>
                                 </td>
-                            </>
+                            </div>
                         ) : (
                             null
                         )}
